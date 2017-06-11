@@ -26,6 +26,8 @@ const int8_t encoder_dir[]={0, -1, 1, 0, 1, 0, 0, -1, -1, 0, 0, 1, 0, 1, -1, 0};
 //encoder initialization
 void enc_init(void) {
 	IO_IN(ENC_DDR, ENC_A |  ENC_B);			//enc a/b as input
+	WPU |= ENC_A | ENC_B;					//enable weak pull-up on the input channels
+	nGPPU = 0;								//'0'->enable weak pull-up
 	
 	IO_OUT(OUT_DDR, OUT_UP | OUT_DN | OUT_PULSE);
 	
